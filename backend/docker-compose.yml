@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: moodboard-postgres
+    environment:
+      POSTGRES_DB: moodboard
+      POSTGRES_USER: moodboard
+      POSTGRES_PASSWORD: localdev
+    ports:
+      - "5432:5432"
+    volumes:
+      - moodboard_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U moodboard -d moodboard"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  moodboard_pgdata:

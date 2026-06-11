@@ -1,0 +1,23 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Runtime upload data — not source code
+uploads/
+
+# Secrets — never commit
+.env
+*.env
+application-local.yml
+
+# OS / logs
+.DS_Store
+*.log
+local.properties
