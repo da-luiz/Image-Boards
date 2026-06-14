@@ -7,12 +7,14 @@ import com.moodboard.backend.storage.StorageService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 
 @RestController
+@RequestMapping("/api/images")
 class ImageController(
     private val imageService: ImageService,
     private val storageService: StorageService,   // used only to build URLs for responses
@@ -43,14 +45,14 @@ class ImageController(
     }
 
     /** GET /images/latest — the endpoint the mobile app hits on open. */
-    @GetMapping("/images/latest")
+    @GetMapping("/latest")
     fun latest(
         @RequestParam(defaultValue = "20") limit: Int,
     ): List<ImageResponse> =
         imageService.latest(limit).map { it.toResponse() }
 
     /** GET /images — list all, or filter by ?categoryId=. */
-    @GetMapping("/images")
+    @GetMapping
     fun list(
         @RequestParam(required = false) categoryId: Long?,
         @RequestParam(defaultValue = "50") limit: Int,
