@@ -21,8 +21,10 @@ class GlobalExceptionHandler {
             .body(ApiError(400, "Bad Request", ex.message))
 
     @ExceptionHandler(Exception::class)
-    fun handleUnexpected(ex: Exception): ResponseEntity<ApiError> =
-        ResponseEntity
+    fun handleUnexpected(ex: Exception): ResponseEntity<ApiError> {
+        ex.printStackTrace() // Print the full stack trace to the IntelliJ console
+        return ResponseEntity
             .status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .body(ApiError(500, "Internal Server Error", "Something went wrong"))
+            .body(ApiError(500, "Internal Server Error", ex.message ?: "Something went wrong"))
+    }
 }
