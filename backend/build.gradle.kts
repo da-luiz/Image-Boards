@@ -19,7 +19,9 @@ repositories {
 }
 
 dependencies {
-	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+// --- Phase 2.5 (auth) ---
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("com.auth0:java-jwt:4.5.0")
 	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-flyway")
 	implementation("org.flywaydb:flyway-database-postgresql")
