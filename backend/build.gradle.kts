@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+	// --- R2 storage (S3-compatible) ---
+	implementation("software.amazon.awssdk:s3:2.31.78")
 // --- Phase 2.5 (auth) ---
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("com.auth0:java-jwt:4.5.0")

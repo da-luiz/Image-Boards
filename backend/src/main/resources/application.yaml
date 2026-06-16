@@ -4,6 +4,8 @@ app:
     expiration-ms: 86400000
 
 spring:
+  profiles:
+    default: local
   application:
     name: backend
   datasource:
